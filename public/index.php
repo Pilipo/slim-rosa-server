@@ -11,6 +11,11 @@ $app->addRoutingMiddleware();
 
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
+$app->get('/', function (Request $request, Response $response, $args) {
+  $response->getBody()->write("Hello, world");
+  return $response;
+});
+
 $app->get('/hello/{name}', function (Request $request, Response $response, $args) {
   $name = $args['name'];
   $response->getBody()->write("Hello, $name");
