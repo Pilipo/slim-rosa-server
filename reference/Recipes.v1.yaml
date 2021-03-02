@@ -2,33 +2,24 @@ openapi: 3.0.0
 info:
   title: Recipes
   version: '1.0'
-  description: >-
+  description: |-
     <span style="font-size: 3em; color: #5D535E;">
       <i class="fas fa-paper-plane fa-2x"></i> <i>Rosa</i></span> 
 
     </br>
-
     </br>
 
+    Interact with the `'Recipes'` API to get a list of recipes, add or remove recipes, and to update existing recipes.
 
-    Interact with the `'Recipes'` API to get a list of recipes, add
-    or remove recipes, and to update existing recipes.
-
-
-    Use this API to leverage Rosa's central repository of recipes that
-    allow's users to make menus and grocery lists.
-
+    Use this API to leverage Rosa's central repository of recipes that allow's users to make menus and grocery lists.
 
 
     ```bash
-
     curl --request GET \
       --url 'https://rosa.philliplehner.com/api/recipes/abc?spaceid=all&sort=desc&limit=10' \
       --header 'apikey: 123' \
       --header 'deviceid: all'
     ```
-
-
   contact:
     name: Phillip Lehner
     email: pl@philliplehner.com
@@ -49,7 +40,8 @@ paths:
         description: Id of an existing recipe.
     get:
       summary: Get Recipe Info by Recipe ID
-      tags: []
+      tags:
+        - recipes
       responses:
         '200':
           description: Recipe Found
@@ -61,7 +53,7 @@ paths:
                 Get Recipe Biscuits:
                   value:
                     id: 142
-                    title: 'Biscuits'
+                    title: Biscuits
                     servings: '12'
         '404':
           description: Recipe Not Found
@@ -106,7 +98,9 @@ paths:
                 value:
                   servings: '13'
         description: Patch recipe properties to update.
-  '/recipe':
+      tags:
+        - recipes
+  /recipe:
     post:
       summary: Create New Recipe
       operationId: post-recipe
@@ -121,7 +115,7 @@ paths:
                 New Recipe Baked Beans:
                   value:
                     id: 12
-                    title: 'Baked Beans'
+                    title: Baked Beans
                     servings: '8'
         '400':
           description: Missing Required Information
@@ -143,10 +137,12 @@ paths:
             examples:
               Create Recipe Smores:
                 value:
-                  title: 'Smores'
+                  title: Smores
                   servings: '10'
         description: Post the necessary fields for the API to create a new recipe.
       description: Create a new recipe.
+      tags:
+        - recipes
 components:
   schemas:
     Recipe:
@@ -170,3 +166,5 @@ components:
         - id
         - title
         - servings
+tags:
+  - name: recipes
