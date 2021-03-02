@@ -116,19 +116,19 @@ paths:
                   lastName: Baker
                   dateOfBirth: '1985-10-02'
         description: Patch user properties to update.
-  /user:
+  /recipe:
     post:
-      summary: Create New User
-      operationId: post-user
+      summary: Create New Recipe
+      operationId: post-recipe
       responses:
         '200':
-          description: User Created
+          description: Recipe Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Recipe'
               examples:
-                New User Bob Fellow:
+                New Recipe Bob Fellow:
                   value:
                     id: 12
                     firstName: Bob
