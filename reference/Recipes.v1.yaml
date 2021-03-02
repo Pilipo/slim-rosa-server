@@ -61,8 +61,8 @@ paths:
                 Get Recipe Biscuits:
                   value:
                     id: 142
-                    title: Biscuits
-                    servings: 12
+                    title: 'Biscuits'
+                    servings: '12'
         '404':
           description: Recipe Not Found
       operationId: get-recipes-recipeId
@@ -81,7 +81,7 @@ paths:
                 Updated Recipe Biscuits:
                   value:
                     id: 142
-                    Title: Buttermilk Biscuits
+                    title: Buttermilk Biscuits
                     servings: 13
         '404':
           description: Recipe Not Found
@@ -94,27 +94,18 @@ paths:
             schema:
               type: object
               properties:
-                firstName:
+                title:
                   type: string
-                lastName:
-                  type: string
-                email:
-                  type: string
-                  description: 'If a new email is given, the user''s email verified property will be set to false.'
-                dateOfBirth:
+                servings:
                   type: string
             examples:
-              Update First Name:
+              Update Title:
                 value:
-                  firstName: Rebecca
-              Update Email:
+                  title: Buttermilk Biscuit Bites
+              Update Servings:
                 value:
-                  email: rebecca@gmail.com
-              Update Last Name & Date of Birth:
-                value:
-                  lastName: Baker
-                  dateOfBirth: '1985-10-02'
-        description: Patch user properties to update.
+                  servings: '13'
+        description: Patch recipe properties to update.
   '/recipe':
     post:
       summary: Create New Recipe
