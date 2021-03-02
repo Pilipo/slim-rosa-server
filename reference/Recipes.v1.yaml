@@ -1,67 +1,94 @@
 openapi: 3.0.0
 info:
-  title: THis is a new API
+  title: Recipes
   version: '1.0'
+  description: >-
+    <span style="font-size: 3em; color: #5D535E;">
+      <i class="fas fa-robot fa-2x"></i> <i>CloudHome
+    </i></span> 
+
+    </br>
+
+    </br>
+
+
+    Interact with the `'Recipes'` API to get a list of recipes, add
+    or remove recipes, and to update existing recipes.
+
+
+    Use this API to leverage Rosa's central repository of recipes that
+    allow's users to make menus and grocery lists.
+
+
+
+    ```bash
+
+    curl --request GET \
+      --url 'https://rosa.philliplehner.com/api/recipes/abc?spaceid=all&sort=desc&limit=10' \
+      --header 'apikey: 123' \
+      --header 'deviceid: all'
+    ```
+
+
+  contact:
+    name: Phillip Lehner
+    email: pl@philliplehner.com
+    url: philliplehner.com
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
 servers:
-  - url: 'http://localhost:3000'
+  - url: 'https://rosa.philliplehner.com/v1'
 paths:
-  '/users/{userId}':
+  '/recipes/{recipeID}':
     parameters:
       - schema:
           type: integer
-        name: userId
+        name: recipeID
         in: path
         required: true
-        description: Id of an existing user.
+        description: Id of an existing recipe.
     get:
-      summary: Get User Info by User ID
+      summary: Get Recipe Info by Recipe ID
       tags: []
       responses:
         '200':
-          description: User Found
+          description: Recipe Found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Recipe'
               examples:
-                Get User Alice Smith:
+                Get Recipe Biscuits:
                   value:
                     id: 142
-                    firstName: Alice
-                    lastName: Smith
-                    email: alice.smith@gmail.com
-                    dateOfBirth: '1997-10-31'
-                    emailVerified: true
-                    signUpDate: '2019-08-24'
+                    title: Biscuits
+                    servings: 12
         '404':
-          description: User Not Found
-      operationId: get-users-userId
-      description: Retrieve the information of the user with the matching user ID.
+          description: Recipe Not Found
+      operationId: get-recipes-recipeId
+      description: Retrieve the information of the recipe with the matching recipe ID.
     patch:
-      summary: Update User Information
-      operationId: patch-users-userId
+      summary: Update Recipe Information
+      operationId: patch-recipes-recipeId
       responses:
         '200':
-          description: User Updated
+          description: Recipe Updated
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Recipe'
               examples:
-                Updated User Rebecca Baker:
+                Updated Recipe Biscuits:
                   value:
-                    id: 13
-                    firstName: Rebecca
-                    lastName: Baker
-                    email: rebecca@gmail.com
-                    dateOfBirth: '1985-10-02'
-                    emailVerified: false
-                    createDate: '2019-08-24'
+                    id: 142
+                    Title: Buttermilk Biscuits
+                    servings: 13
         '404':
-          description: User Not Found
+          description: Recipe Not Found
         '409':
-          description: Email Already Taken
-      description: Update the infromation of an existing user.
+          description: Title Already Taken
+      description: Update the information of an existing recipe.
       requestBody:
         content:
           application/json:
