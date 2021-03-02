@@ -172,7 +172,7 @@ paths:
       description: Create a new user.
 components:
   schemas:
-    User:
+    Recipe:
       title: User
       type: object
       description: ''
