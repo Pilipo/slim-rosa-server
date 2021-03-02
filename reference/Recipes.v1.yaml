@@ -4,8 +4,7 @@ info:
   version: '1.0'
   description: >-
     <span style="font-size: 3em; color: #5D535E;">
-      <i class="fas fa-robot fa-2x"></i> <i>CloudHome
-    </i></span> 
+      <i class="fas fa-paper-plane fa-2x"></i> <i>Rosa</i></span> 
 
     </br>
 
@@ -116,7 +115,7 @@ paths:
                   lastName: Baker
                   dateOfBirth: '1985-10-02'
         description: Patch user properties to update.
-  /recipe:
+  '/recipe':
     post:
       summary: Create New Recipe
       operationId: post-recipe
@@ -173,43 +172,23 @@ paths:
 components:
   schemas:
     Recipe:
-      title: User
+      title: Recipe
       type: object
       description: ''
       x-examples:
-        Alice Smith:
+        Biscuit:
           id: 142
-          firstName: Alice
-          lastName: Smith
-          email: alice.smith@gmail.com
-          dateOfBirth: '1997-10-31'
-          emailVerified: true
-          signUpDate: '2019-08-24'
+          title: Buttermilk Biscuit
+          servings: '12'
       properties:
         id:
           type: integer
-          description: Unique identifier for the given user.
-        firstName:
+          description: Unique identifier for the given recipe.
+        title:
           type: string
-        lastName:
+        servings:
           type: string
-        email:
-          type: string
-          format: email
-        dateOfBirth:
-          type: string
-          format: date
-          example: '1997-10-31'
-        emailVerified:
-          type: boolean
-          description: Set to true if the user's email has been verified.
-        createDate:
-          type: string
-          format: date
-          description: The date that the user was created.
       required:
         - id
-        - firstName
-        - lastName
-        - email
-        - emailVerified
+        - title
+        - servings
