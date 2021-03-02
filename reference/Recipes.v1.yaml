@@ -82,7 +82,7 @@ paths:
                   value:
                     id: 142
                     title: Buttermilk Biscuits
-                    servings: 13
+                    servings: '13'
         '404':
           description: Recipe Not Found
         '409':
@@ -118,48 +118,35 @@ paths:
               schema:
                 $ref: '#/components/schemas/Recipe'
               examples:
-                New Recipe Bob Fellow:
+                New Recipe Baked Beans:
                   value:
                     id: 12
-                    firstName: Bob
-                    lastName: Fellow
-                    email: bob.fellow@gmail.com
-                    dateOfBirth: '1996-08-24'
-                    emailVerified: false
-                    createDate: '2020-11-18'
+                    title: 'Baked Beans'
+                    servings: '8'
         '400':
           description: Missing Required Information
         '409':
-          description: Email Already Taken
+          description: Title Already Taken
       requestBody:
         content:
           application/json:
             schema:
               type: object
               properties:
-                firstName:
+                title:
                   type: string
-                lastName:
+                servings:
                   type: string
-                email:
-                  type: string
-                dateOfBirth:
-                  type: string
-                  format: date
               required:
-                - firstName
-                - lastName
-                - email
-                - dateOfBirth
+                - title
+                - servings
             examples:
-              Create User Bob Fellow:
+              Create Recipe Smores:
                 value:
-                  firstName: Bob
-                  lastName: Fellow
-                  email: bob.fellow@gmail.com
-                  dateOfBirth: '1996-08-24'
-        description: Post the necessary fields for the API to create a new user.
-      description: Create a new user.
+                  title: 'Smores'
+                  servings: '10'
+        description: Post the necessary fields for the API to create a new recipe.
+      description: Create a new recipe.
 components:
   schemas:
     Recipe:
